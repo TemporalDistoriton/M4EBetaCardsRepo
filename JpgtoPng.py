@@ -4,6 +4,7 @@ from PIL import Image
 def convert_jpg_to_png(root_folder):
     jpg_extensions = ('.jpg', '.jpeg', '.JPG', '.JPEG')
     converted_count = 0
+    skipped_count = 0
 
     # Only go one level deep into subfolders
     for subfolder in os.listdir(root_folder):
@@ -13,6 +14,12 @@ def convert_jpg_to_png(root_folder):
                 if file.endswith(jpg_extensions):
                     jpg_file = os.path.join(subfolder_path, file)
                     png_file = os.path.splitext(jpg_file)[0] + '.png'
+
+                    if os.path.exists(png_file):
+                        print(f"Skipping (already exists): {png_file}")
+                        skipped_count += 1
+                        continue
+
                     try:
                         with Image.open(jpg_file) as img:
                             img.save(png_file, 'PNG')
@@ -22,7 +29,7 @@ def convert_jpg_to_png(root_folder):
                     except Exception as e:
                         print(f"Error converting {jpg_file}: {e}")
 
-    print(f"Conversion complete! {converted_count} files converted.")
+    print(f"\nConversion complete! {converted_count} files converted, {skipped_count} skipped.")
 
 if __name__ == "__main__":
     current_dir = os.getcwd()
