@@ -22,7 +22,7 @@ def count_files_in_folder(folder_path):
 def compare_folder_counts(base_directory="."):
     """
     Compare file counts between current folders and their archived versions
-    in ZZZ_Superceded/12-06-2025/
+    in ZZZ_Superceded/19-06-2025/
     """
     # Convert to absolute path for clarity
     base_path = Path(base_directory).resolve()
@@ -31,7 +31,7 @@ def compare_folder_counts(base_directory="."):
     skip_folders = {"ZZZ_Superceded", "2d Model Art"}
     
     # Define the archive path
-    archive_base = base_path / "ZZZ_Superceded" / "12-06-2025"
+    archive_base = base_path / "ZZZ_Superceded" / "19-06-2025"
     
     print(f"Scanning directory: {base_path}")
     print(f"Archive location: {archive_base}")
