@@ -80,13 +80,12 @@ def compare_folder_counts(base_directory="."):
             'difference': difference
         })
         
-        # Print result
+        # Print result (only for changes)
         if difference > 0:
             print(f"{folder_name}: Increased by {difference} files (Current: {current_count}, Archive: {archive_count})")
         elif difference < 0:
             print(f"{folder_name}: Decreased by {abs(difference)} files (Current: {current_count}, Archive: {archive_count})")
-        else:
-            print(f"{folder_name}: No change ({current_count} files)")
+        # Removed the else clause that printed "No change" messages
     
     print("-" * 50)
     
